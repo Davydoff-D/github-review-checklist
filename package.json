@@ -1,0 +1,19 @@
+{
+  "name": "github-review-checklist",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A persistent personal checklist for GitHub pull request review comments.",
+  "type": "module",
+  "scripts": {
+    "build": "vite build",
+    "typecheck": "tsc --noEmit",
+    "check": "bun run typecheck && bunx biome check ."
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.2.0",
+    "@types/chrome": "^0.2.7",
+    "@types/node": "^24.3.0",
+    "typescript": "^5.9.2",
+    "vite": "^7.1.3"
+  }
+}

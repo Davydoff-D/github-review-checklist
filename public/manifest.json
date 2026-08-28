@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "GitHub Review Checklist",
+  "version": "0.1.0",
+  "description": "Mark GitHub pull request review comments as fixed and keep the state after reloads.",
+  "permissions": ["storage"],
+  "host_permissions": ["https://github.com/*"],
+  "content_scripts": [
+    {
+      "matches": ["https://github.com/*/pull/*"],
+      "css": ["content.css"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_title": "GitHub Review Checklist"
+  }
+}

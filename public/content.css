@@ -1,0 +1,49 @@
+[data-review-checklist-root="true"] {
+  opacity: 0.58;
+}
+
+.review-checklist-control {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+  padding: 6px 10px;
+  color: var(--fgColor-muted, #656d76);
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 500;
+  user-select: none;
+}
+
+.review-checklist-control input {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  accent-color: #1a7f37;
+}
+
+.review-checklist-progress {
+  display: inline-block;
+  margin: 8px 0;
+  padding: 4px 8px;
+  border: 1px solid var(--borderColor-default, #d0d7de);
+  border-radius: 6px;
+  color: var(--fgColor-muted, #656d76);
+  font-size: 12px;
+}
+
+.review-checklist-filter {
+  display: inline-flex;
+  gap: 4px;
+  margin: 8px 0;
+}
+
+.review-checklist-filter button {
+  padding: 4px 8px;
+  border: 1px solid var(--borderColor-default, #d0d7de);
+  border-radius: 6px;
+  background: var(--bgColor-default, #fff);
+  color: var(--fgColor-default, #1f2328);
+  cursor: pointer;
+  font-size: 12px;
+}
