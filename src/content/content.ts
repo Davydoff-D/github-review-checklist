@@ -183,6 +183,15 @@ const render = async (): Promise<void> => {
   renderFilter(comments)
 }
 
+const isExtensionNode = (node: Node): boolean => {
+  if (!(node instanceof Element)) return false
+  return (
+    node.matches(`[${ROOT_ATTRIBUTE}], [${CONTROL_ATTRIBUTE}], [${FILTER_ATTRIBUTE}]`) ||
+    node.querySelector(`[${ROOT_ATTRIBUTE}], [${CONTROL_ATTRIBUTE}], [${FILTER_ATTRIBUTE}]`) !==
+      null
+  )
+}
+
 const start = (): void => {
   let renderQueued = false
   const scheduleRender = (): void => {
@@ -194,7 +203,13 @@ const start = (): void => {
     })
   }
 
-  const observer = new MutationObserver(scheduleRender)
+  const observer = new MutationObserver((mutations) => {
+    const pageChanged = mutations.some((mutation) => {
+      if (isExtensionNode(mutation.target)) return false
+      return Array.from(mutation.addedNodes).some((node) => !isExtensionNode(node))
+    })
+    if (pageChanged) scheduleRender()
+  })
   observer.observe(document.body, { childList: true, subtree: true })
   document.addEventListener("turbo:load", scheduleRender)
   window.addEventListener("popstate", scheduleRender)
